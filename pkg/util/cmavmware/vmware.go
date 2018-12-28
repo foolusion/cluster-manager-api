@@ -3,7 +3,7 @@ package cmavmware
 import (
 	"context"
 	"crypto/tls"
-	pb "github.com/samsung-cnct/cma-vmware/pkg/generated/api"
+	pb "github.com/samsung-cnct/cma-ssh/pkg/generated/api"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 )
@@ -48,15 +48,15 @@ func (a *Client) SetClient(client pb.ClusterClient) {
 }
 
 func (a *Client) CreateCluster(input CreateClusterInput) (CreateClusterOutput, error) {
-	var workerNodes []*pb.VMWareMachineSpec
-	var controlPlaneNodes []*pb.VMWareMachineSpec
+	var workerNodes []*pb.SshMachineSpec
+	var controlPlaneNodes []*pb.SshMachineSpec
 
 	for _, j := range input.ControlPlaneNodes {
 		var labels []*pb.KubernetesLabel
 		for _, k := range j.Labels {
 			labels = append(labels, &pb.KubernetesLabel{Name: k.Name, Value: k.Value})
 		}
-		controlPlaneNodes = append(controlPlaneNodes, &pb.VMWareMachineSpec{
+		controlPlaneNodes = append(controlPlaneNodes, &pb.SshMachineSpec{
 			Host:     j.Host,
 			Port:     int32(j.Port),
 			Username: j.Username,
@@ -69,7 +69,7 @@ func (a *Client) CreateCluster(input CreateClusterInput) (CreateClusterOutput, e
 		for _, k := range j.Labels {
 			labels = append(labels, &pb.KubernetesLabel{Name: k.Name, Value: k.Value})
 		}
-		workerNodes = append(workerNodes, &pb.VMWareMachineSpec{
+		workerNodes = append(workerNodes, &pb.SshMachineSpec{
 			Host:     j.Host,
 			Port:     int32(j.Port),
 			Username: j.Username,
@@ -150,15 +150,15 @@ func (a *Client) ListClusters(input ListClusterInput) (ListClusterOutput, error)
 }
 
 func (a *Client) AdjustCluster(input AdjustClusterInput) (AdjustClusterOutput, error) {
-	var addNodes []*pb.VMWareMachineSpec
-	var removeNodes []*pb.AdjustClusterMsg_VMWareRemoveMachineSpec
+	var addNodes []*pb.SshMachineSpec
+	var removeNodes []*pb.AdjustClusterMsg_SshRemoveMachineSpec
 
 	for _, j := range input.AddNodes {
 		var labels []*pb.KubernetesLabel
 		for _, k := range j.Labels {
 			labels = append(labels, &pb.KubernetesLabel{Name: k.Name, Value: k.Value})
 		}
-		addNodes = append(addNodes, &pb.VMWareMachineSpec{
+		addNodes = append(addNodes, &pb.SshMachineSpec{
 			Host:     j.Host,
 			Port:     int32(j.Port),
 			Username: j.Username,
@@ -167,7 +167,7 @@ func (a *Client) AdjustCluster(input AdjustClusterInput) (AdjustClusterOutput, e
 		})
 	}
 	for _, j := range input.RemoveNodes {
-		removeNodes = append(removeNodes, &pb.AdjustClusterMsg_VMWareRemoveMachineSpec{
+		removeNodes = append(removeNodes, &pb.AdjustClusterMsg_SshRemoveMachineSpec{
 			Host: j.Host,
 		})
 	}

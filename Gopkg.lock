@@ -392,11 +392,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:4b21e6e28c66cec039c26ec8c06afe74c287e9bce2538c69656c2023c94ae1ff"
-  name = "github.com/samsung-cnct/cma-vmware"
+  digest = "1:e6c6364539d71aa52de602d4ef96c3e249cfdc8a93edf401f660fbcb62463b83"
+  name = "github.com/samsung-cnct/cma-ssh"
   packages = ["pkg/generated/api"]
   pruneopts = "UT"
-  revision = "adb3d8300b804297a96a9898f4ad945fc3d81b7e"
+  revision = "eec1bdc4e8ea2db6f256514bf20385e4950bfaac"
 
 [[projects]]
   digest = "1:3f53e9e4dfbb664cd62940c9c4b65a2171c66acd0b7621a1a6b8e78513525a52"
@@ -847,7 +847,7 @@
     "github.com/samsung-cnct/cma-operator/pkg/apis/cma/v1alpha1",
     "github.com/samsung-cnct/cma-operator/pkg/generated/cma/client/clientset/versioned",
     "github.com/samsung-cnct/cma-operator/pkg/generated/cma/client/clientset/versioned/typed/cma/v1alpha1",
-    "github.com/samsung-cnct/cma-vmware/pkg/generated/api",
+    "github.com/samsung-cnct/cma-ssh/pkg/generated/api",
     "github.com/sirupsen/logrus",
     "github.com/soheilhy/cmux",
     "github.com/spf13/cobra",

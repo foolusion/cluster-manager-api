@@ -1,7 +1,7 @@
 package cmavmware
 
 import (
-	pb "github.com/samsung-cnct/cma-vmware/pkg/generated/api"
+	pb "github.com/samsung-cnct/cma-ssh/pkg/generated/api"
 	"google.golang.org/grpc"
 )
 
